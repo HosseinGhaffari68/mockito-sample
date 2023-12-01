@@ -1,25 +1,17 @@
-package com.nikamooz.spring.session08.test;
+package com.nikamooz.spring.test.mockito;
 
-import com.nikamooz.spring.session08.test.mockito.Contact;
-import com.nikamooz.spring.session08.test.mockito.User;
-import com.nikamooz.spring.session08.test.mockito.UserRepository;
-import com.nikamooz.spring.session08.test.mockito.UserService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.*;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 import org.mockito.stubbing.Answer;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 
-//@ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.STRICT_STUBS)
 public class UserServiceTests {
 
@@ -28,9 +20,6 @@ public class UserServiceTests {
 
     @Mock
     UserRepository userRepository;
-
-    @Spy
-    ArrayList<String> list = new ArrayList<String>();
 
     @BeforeEach
     void init() {
@@ -71,23 +60,10 @@ public class UserServiceTests {
     private Answer<User> createAnswer() {
         Random random = new Random();
 
-        return new Answer<User>(){
-            @Override
-            public User answer(InvocationOnMock invocationOnMock) throws Throwable {
-                User user = invocationOnMock.getArgument(0);
-                user.setId(random.nextLong());
-                return user;
-            }
+        return invocationOnMock -> {
+            User user = invocationOnMock.getArgument(0);
+            user.setId(random.nextLong());
+            return user;
         };
-    }
-
-    @Test
-    public void testSpy(){
-        Mockito.when(list.size()).thenReturn(1);
-        list.add("Iran");
-        list.add("is");
-        list.add("big");
-        list.add("country");
-        Assertions.assertEquals(1, list.size());
     }
 }

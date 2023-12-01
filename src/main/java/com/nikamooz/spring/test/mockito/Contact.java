@@ -1,4 +1,4 @@
-package com.nikamooz.spring.session08.test.mockito;
+package com.nikamooz.spring.test.mockito;
 
 public class Contact {
     String city;

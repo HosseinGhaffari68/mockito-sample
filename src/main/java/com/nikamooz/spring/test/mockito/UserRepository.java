@@ -1,6 +1,4 @@
-package com.nikamooz.spring.session08.test.mockito;
-
-import java.util.logging.Logger;
+package com.nikamooz.spring.test.mockito;
 
 
 public interface UserRepository {
