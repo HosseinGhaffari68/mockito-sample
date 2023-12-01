@@ -1,4 +1,4 @@
-package com.nikamooz.spring.test.mockito;
+package com.spring.test.mockito;
 
 public class User {
     Long id;

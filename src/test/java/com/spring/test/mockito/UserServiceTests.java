@@ -1,4 +1,4 @@
-package com.nikamooz.spring.test.mockito;
+package com.spring.test.mockito;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
